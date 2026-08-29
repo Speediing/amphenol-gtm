@@ -1,5 +1,5 @@
-import { BrandLockup } from "@/components/BrandLockup";
 import { CompareTable } from "@/components/CompareTable";
+import { HeroDemo } from "@/components/HeroDemo";
 import { HeroTelemetry } from "@/components/HeroTelemetry";
 import { JobSection } from "@/components/JobSection";
 import { QuoteWall } from "@/components/QuoteWall";
@@ -24,20 +24,7 @@ export default function HomePage() {
         <div className="report-hero">
           <HeroTelemetry />
           <section className="hero">
-            <div>
-              <p className="eyebrow">An agent fleet for every Amphenol seller</p>
-              <h1>The agents that keep working while your sellers sell.</h1>
-            </div>
-            <div>
-              <BrandLockup size="sm" />
-              <p className="hero-intro">
-                Grok Bot can stay on a call, pick up a product question, and
-                research an account in the background. These examples focus on
-                AI interconnect demand, high-speed and fiber-optic work, and
-                keeping approved integration context current. Every output
-                waits for review.
-              </p>
-            </div>
+            <HeroDemo />
           </section>
 
           <section className="usecase-framing">

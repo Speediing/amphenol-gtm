@@ -76,6 +76,13 @@ try {
   tracked = walkFiles(root).map((file) => file.slice(root.length + 1));
 }
 
+for (const rel of [
+  "src/components/HeroDemo.tsx",
+  "src/data/hero-jobs.ts",
+]) {
+  if (existsSync(join(root, rel)) && !tracked.includes(rel)) tracked.push(rel);
+}
+
 const skipExact = new Set(["scripts/verify-amphenol.mjs"]);
 const binaryExt = new Set([
   ".mp4",
@@ -170,6 +177,84 @@ if (!lockup.includes(officialLogo)) {
 const page = read("src/app/(protected)/page.tsx");
 if (!page.includes("Mike Weinert") || !page.includes("mike.weinert@cursor.com")) {
   fail("owner footer must name Mike Weinert and mike.weinert@cursor.com");
+}
+
+const heroDemoPath = "src/components/HeroDemo.tsx";
+const heroJobsPath = "src/data/hero-jobs.ts";
+let heroDemo = "";
+let heroJobs = "";
+if (!existsSync(join(root, heroDemoPath))) {
+  fail(`${heroDemoPath} is required`);
+} else {
+  heroDemo = read(heroDemoPath);
+}
+if (!existsSync(join(root, heroJobsPath))) {
+  fail(`${heroJobsPath} is required`);
+} else {
+  heroJobs = read(heroJobsPath);
+}
+
+if (!page.includes('import { HeroDemo } from "@/components/HeroDemo"')) {
+  fail("protected page must import HeroDemo");
+}
+const heroSection = page.match(
+  /<section className="hero">\s*([\s\S]*?)\s*<\/section>/,
+);
+if (!heroSection || heroSection[1].trim() !== "<HeroDemo />") {
+  fail("HeroDemo must be the entire hero section");
+}
+
+if (!heroDemo.includes("HERO_JOBS")) {
+  fail("HeroDemo must render HERO_JOBS");
+}
+if (!heroJobs.includes("export const HERO_JOBS")) {
+  fail("hero-jobs.ts must export HERO_JOBS");
+}
+const heroJobCount = [...heroJobs.matchAll(/^\s{4}id: "[^"]+",$/gm)].length;
+if (heroJobCount !== 8) {
+  fail(`expected eight HERO_JOBS entries, found ${heroJobCount}`);
+}
+
+const heroClassNames = new Set(
+  [...heroDemo.matchAll(/className="([^"]+)"/g)].flatMap((match) =>
+    match[1].split(/\s+/),
+  ),
+);
+for (const className of [
+  "hero-copy",
+  "hero-phone-jobs",
+  "hero-bot-demo",
+  "hero-phone",
+  "notch",
+  "header",
+  "thread",
+  "composer",
+]) {
+  if (!heroClassNames.has(className)) {
+    fail(`HeroDemo must include the ${className} class`);
+  }
+}
+
+const styles = read("src/app/globals.css");
+for (const selector of [
+  ".hero-phone",
+  ".hero-bot-demo",
+  ".hero-phone-jobs",
+]) {
+  if (!styles.includes(`${selector} {`)) {
+    fail(`globals.css must include the ${selector} family`);
+  }
+}
+
+if (/\bSent\b/i.test(`${heroDemo}\n${heroJobs}`)) {
+  fail("HeroDemo must never show Sent");
+}
+if (
+  !heroDemo.toLowerCase().includes("working in the background") ||
+  !heroJobs.includes("draft") ||
+  !heroJobs.includes("review")
+) {
+  fail("HeroDemo must show background work with draft and review semantics");
 }
 
 const grok = read("src/components/GrokBotWindow.tsx");
