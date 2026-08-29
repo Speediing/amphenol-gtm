@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 640" role="img" aria-hidden="true">
+  <defs>
+    <filter id="call-wash" x="-15%" y="-15%" width="130%" height="130%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="3" seed="21" result="n" />
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="22" />
+      <feGaussianBlur stdDeviation="0.8" />
+    </filter>
+  </defs>
+  <rect width="800" height="640" fill="#f3efe4" />
+  <g filter="url(#call-wash)">
+    <ellipse cx="420" cy="300" rx="280" ry="210" fill="#c9a06a" opacity="0.28" />
+    <ellipse cx="180" cy="160" rx="200" ry="140" fill="#6f8f86" opacity="0.22" />
+    <ellipse cx="620" cy="480" rx="190" ry="130" fill="#8a5a32" opacity="0.2" />
+    <path d="M80 420 C 180 300, 300 500, 430 340 S 650 220, 760 360" fill="none" stroke="#1a3a52" stroke-width="16" opacity="0.12" />
+    <path d="M60 220 C 220 140, 340 260, 500 180 S 700 120, 780 200" fill="none" stroke="#b87333" stroke-width="12" opacity="0.16" />
+  </g>
+  <g opacity="0.45" fill="#1a3a52">
+    <circle cx="250" cy="250" r="7" /><circle cx="278" cy="250" r="7" /><circle cx="306" cy="250" r="7" />
+    <circle cx="250" cy="278" r="7" /><circle cx="278" cy="278" r="7" /><circle cx="306" cy="278" r="7" />
+    <circle cx="250" cy="306" r="7" /><circle cx="278" cy="306" r="7" /><circle cx="306" cy="306" r="7" />
+  </g>
+  <path d="M320 278 C 410 250, 470 330, 560 290" fill="none" stroke="#3d6b73" stroke-width="4" opacity="0.45" />
+  <path d="M320 300 C 400 360, 490 240, 580 320" fill="none" stroke="#8a5a32" stroke-width="4" opacity="0.35" />
+</svg>

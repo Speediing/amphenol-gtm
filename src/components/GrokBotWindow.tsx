@@ -97,7 +97,7 @@ function Thread({
   playback: DemoPlayback;
   streamRef: RefObject<HTMLDivElement | null>;
 }) {
-  const { people, visible, typingFrom, sentDrafts, sendDraft } = playback;
+  const { people, visible, typingFrom, reviewedDrafts, markReviewed } = playback;
 
   return (
     <div className="msg-stream" ref={streamRef} role="log" aria-live="polite">
@@ -117,13 +117,13 @@ function Thread({
         }
 
         if (message.kind === "draft") {
-          const sent = sentDrafts[message.id];
+          const reviewed = reviewedDrafts[message.id];
           return (
             <div key={message.id} className="msg-row in">
               <GrokFace />
               <div className="msg-bubble in draft">
                 <p className="draft-label">
-                  {message.draftLabel || "Draft"} · not sent
+                  {message.draftLabel || "Draft"} · draft only
                 </p>
                 {message.body ? (
                   <pre className="draft-body">{message.body}</pre>
@@ -131,15 +131,15 @@ function Thread({
                 {message.artifact ? (
                   <ArtifactCard artifact={message.artifact} />
                 ) : null}
-                {sent ? (
-                  <p className="draft-sent">Sent. You approved this one.</p>
+                {reviewed ? (
+                  <p className="draft-reviewed">Reviewed. Still a draft.</p>
                 ) : (
                   <button
                     type="button"
                     className="draft-send"
-                    onClick={() => sendDraft(message.id)}
+                    onClick={() => markReviewed(message.id)}
                   >
-                    Send?
+                    Mark reviewed
                   </button>
                 )}
               </div>

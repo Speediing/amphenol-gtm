@@ -23,7 +23,7 @@ export function BotComputer({
   const beat = activeBeat(jobId, playback);
 
   const message = playback.current;
-  const sent = message ? Boolean(playback.sentDrafts[message.id]) : false;
+  const reviewed = message ? Boolean(playback.reviewedDrafts[message.id]) : false;
 
   if (!beat) return null;
 
@@ -65,7 +65,7 @@ export function BotComputer({
                 beat={beat}
                 message={message}
                 account={playback.account}
-                sent={sent}
+                reviewed={reviewed}
               />
             </div>
           </div>

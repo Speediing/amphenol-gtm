@@ -1,4 +1,5 @@
 import type { Artifact, StoryBeat } from "@/data/types";
+import { ArtifactCard } from "./ArtifactCard";
 import { HeardSlide } from "./HeardSlide";
 
 function OutboundPack({
@@ -33,31 +34,30 @@ function OutboundPack({
           <article className="out-email-card">
             <p className="out-email-label">Draft email · 1 of 10</p>
             <p className="out-email-subject">
-              Subject · {artifact.account}&apos;s last Sev-2
+              Subject · {artifact.account} public brief
             </p>
             <div className="out-email-copy">
               <p>Hi {firstName},</p>
               <p>
-                Your status page and open Staff SRE role point to the same
-                thing: on-call still stitches APM and logs to name a Sev-2.
+                Public pages and recent filings are in the brief. Open
+                questions are marked Needs confirmation.
               </p>
               <p>
-                I put together the 90-second version for your platform team.
-                Worth fifteen minutes next week?
+                Review when you have a minute. This stays a draft.
               </p>
-              <p>Sam</p>
+              <p>Illustrative workflow</p>
             </div>
             <footer>
-              <span>Send email</span>
-              <span>Discard</span>
+              <span>Review draft</span>
+              <span>Hold</span>
             </footer>
           </article>
 
           <p className="out-message is-you">
-            Send the top 10 emails. They look good.
+            Hold these. I will mark them reviewed after I read them.
           </p>
           <p className="out-message is-bot">
-            Top 10 sending. The rest stay queued.
+            Held. Nothing left this machine.
           </p>
         </div>
 
@@ -82,7 +82,7 @@ function UpstairsMemo({
         <div>
           <p className="leave-kicker">{artifact.title}</p>
           <h3>
-            {artifact.account || "Acme"}
+            {artifact.account || "Sample account"}
             {artifact.amount ? ` · ${artifact.amount}` : ""}
           </h3>
         </div>
@@ -156,10 +156,10 @@ function BetterAnswer({
           <p className="leave-kicker">Say this</p>
           <p className="leave-win">{artifact.betterAnswer}</p>
           <p className="leave-incident" aria-hidden>
-            <span>Prometheus</span>
-            <span>Grafana</span>
-            <span>Log pile</span>
-            <b>APM + Logs</b>
+            <span>Public page</span>
+            <span>Catalog</span>
+            <span>Open question</span>
+            <b>Needs confirmation</b>
           </p>
         </section>
       </div>
@@ -196,7 +196,7 @@ function RedlinePack({
           </ol>
         </section>
         <section className="leave-reply">
-          <p className="leave-kicker">Draft reply · not sent</p>
+          <p className="leave-kicker">Draft reply · needs review</p>
           <p className="leave-reply-meta">
             <span>To</span>
             {artifact.reply.to}
@@ -237,6 +237,14 @@ export function ChapterPayoff({
     body = <FieldPack artifact={artifact} />;
   } else if (artifact?.kind === "scorecard") {
     body = <BetterAnswer artifact={artifact} />;
+  } else if (artifact) {
+    body = (
+      <div className="leave leave-answer">
+        <p className="leave-kicker">Illustrative workflow</p>
+        <h3>{artifact.title}</h3>
+        <ArtifactCard artifact={artifact} />
+      </div>
+    );
   }
 
   if (!body) return null;

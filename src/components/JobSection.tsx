@@ -4,9 +4,9 @@ import { ChapterPayoff } from "./ChapterPayoff";
 import { JobMore } from "./JobMore";
 
 const JOB_ART: Record<JobId, string> = {
-  "standardize-room": "/brand/watercolor-room.png",
-  "legal-redlines": "/brand/watercolor-deal.png",
-  "attach-engine": "/brand/watercolor-attach.png",
+  "standardize-room": "/brand/watercolor-call.svg",
+  "legal-redlines": "/brand/watercolor-question.svg",
+  "attach-engine": "/brand/watercolor-brief.svg",
 };
 
 export function JobSection({ job }: { job: CroJob }) {

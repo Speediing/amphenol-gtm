@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 420" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true">
+  <defs>
+    <filter id="orb-wash" x="-10%" y="-20%" width="120%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.01 0.03" numOctaves="3" seed="8" result="n" />
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="26" />
+      <feGaussianBlur stdDeviation="1.1" />
+    </filter>
+  </defs>
+  <rect width="1600" height="420" fill="#f4ecd9" />
+  <g filter="url(#orb-wash)">
+    <ellipse cx="300" cy="210" rx="340" ry="160" fill="#c48a4a" opacity="0.2" />
+    <ellipse cx="860" cy="140" rx="380" ry="150" fill="#3d6b73" opacity="0.18" />
+    <ellipse cx="1320" cy="260" rx="300" ry="140" fill="#6b4f3a" opacity="0.16" />
+    <path d="M0 220 C 180 80, 360 320, 560 160 S 920 40, 1140 200 1400 340, 1600 180" fill="none" stroke="#1a3a52" stroke-width="16" opacity="0.12" />
+    <path d="M0 300 C 220 200, 440 360, 680 240 S 1080 120, 1320 280 1500 200, 1600 260" fill="none" stroke="#b87333" stroke-width="12" opacity="0.16" />
+    <path d="M40 120 C 280 40, 520 180, 780 90 S 1200 20, 1560 130" fill="none" stroke="#6f8f86" stroke-width="10" opacity="0.18" />
+  </g>
+  <g fill="#1a3a52" opacity="0.28">
+    <circle cx="220" cy="200" r="4" /><circle cx="260" cy="188" r="4" /><circle cx="300" cy="210" r="4" />
+    <circle cx="780" cy="150" r="4" /><circle cx="820" cy="170" r="4" /><circle cx="860" cy="146" r="4" />
+    <circle cx="1240" cy="230" r="4" /><circle cx="1280" cy="250" r="4" /><circle cx="1320" cy="226" r="4" />
+  </g>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 640" role="img" aria-hidden="true">
+  <defs>
+    <filter id="q-wash" x="-15%" y="-15%" width="130%" height="130%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.014" numOctaves="3" seed="33" result="n" />
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="20" />
+      <feGaussianBlur stdDeviation="0.9" />
+    </filter>
+  </defs>
+  <rect width="800" height="640" fill="#f6f1e6" />
+  <g filter="url(#q-wash)">
+    <ellipse cx="360" cy="280" rx="300" ry="220" fill="#3d6b73" opacity="0.2" />
+    <ellipse cx="620" cy="180" rx="180" ry="140" fill="#c4894a" opacity="0.24" />
+    <ellipse cx="200" cy="500" rx="220" ry="120" fill="#6b4f3a" opacity="0.16" />
+    <path d="M40 180 C 160 80, 280 240, 420 120 S 680 60, 780 180" fill="none" stroke="#1e4d6b" stroke-width="14" opacity="0.14" />
+    <path d="M70 500 C 220 420, 360 560, 520 430 S 720 360, 790 470" fill="none" stroke="#b87333" stroke-width="11" opacity="0.18" />
+  </g>
+  <g fill="none" stroke="#1a3a52" stroke-width="3" opacity="0.38">
+    <path d="M140 220 C 220 200, 260 280, 340 250 S 460 210, 540 270 640 310, 700 250" />
+    <path d="M150 260 C 240 300, 300 220, 390 290 S 530 330, 620 270" />
+    <path d="M170 300 C 250 340, 360 280, 450 340 S 600 360, 690 310" />
+  </g>
+  <g fill="#8a5a32" opacity="0.4">
+    <circle cx="340" cy="250" r="4" /><circle cx="390" cy="290" r="4" /><circle cx="450" cy="340" r="4" />
+    <circle cx="540" cy="270" r="4" /><circle cx="620" cy="270" r="4" />
+  </g>
+</svg>

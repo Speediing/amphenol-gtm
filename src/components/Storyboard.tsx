@@ -222,7 +222,7 @@ function LiveVisual({ visual }: { visual: StoryVisual }) {
         <div className="story-ui story-reply-ui" aria-hidden>
           <header className="story-ui-bar">
             <strong>Reply draft</strong>
-            <span>Not sent</span>
+            <span>Draft only</span>
           </header>
           <div className="story-reply-fields">
             <p>
@@ -264,8 +264,8 @@ function LiveVisual({ visual }: { visual: StoryVisual }) {
             <span>Built from evidence</span>
           </header>
           <ol>
-            {visual.items.map((item) => (
-              <li key={item.label}>
+            {visual.items.map((item, index) => (
+              <li key={`${item.label}-${index}`}>
                 <span>{item.label}</span>
                 <strong>{item.answer}</strong>
               </li>

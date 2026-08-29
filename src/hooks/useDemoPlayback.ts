@@ -26,7 +26,7 @@ export function useDemoPlayback(thread: DemoThread) {
   const [visibleCount, setVisibleCount] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [typingFrom, setTypingFrom] = useState<string | null>(null);
-  const [sentDrafts, setSentDrafts] = useState<Record<string, boolean>>({});
+  const [reviewedDrafts, setReviewedDrafts] = useState<Record<string, boolean>>({});
   const [inView, setInView] = useState(false);
 
   const liveThread = useMemo(
@@ -83,7 +83,7 @@ export function useDemoPlayback(thread: DemoThread) {
 
   function replay() {
     setVisibleCount(0);
-    setSentDrafts({});
+    setReviewedDrafts({});
     setTypingFrom(null);
     setPlaying(true);
   }
@@ -96,8 +96,8 @@ export function useDemoPlayback(thread: DemoThread) {
     replay();
   }
 
-  function sendDraft(id: string) {
-    setSentDrafts((prev) => ({ ...prev, [id]: true }));
+  function markReviewed(id: string) {
+    setReviewedDrafts((prev) => ({ ...prev, [id]: true }));
   }
 
   const current = typingFrom
@@ -113,13 +113,13 @@ export function useDemoPlayback(thread: DemoThread) {
     playing,
     done,
     typingFrom,
-    sentDrafts,
+    reviewedDrafts,
     account,
     draftAccount,
     setDraftAccount,
     setPlaying,
     setInView,
-    sendDraft,
+    markReviewed,
     replay,
     applyAccount,
     current,
