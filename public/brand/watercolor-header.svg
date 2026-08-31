@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 720" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true">
+  <defs>
+    <filter id="wash" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.008 0.02" numOctaves="3" seed="11" result="n" />
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="28" xChannelSelector="R" yChannelSelector="G" />
+      <feGaussianBlur stdDeviation="1.2" />
+    </filter>
+    <filter id="grain" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="4" />
+      <feColorMatrix values="0 0 0 0 0.08  0 0 0 0 0.12  0 0 0 0 0.14  0 0 0 0.18 0" />
+    </filter>
+    <linearGradient id="night" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#141814" />
+      <stop offset="0.45" stop-color="#1c2428" />
+      <stop offset="1" stop-color="#2a2118" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="720" fill="url(#night)" />
+  <g filter="url(#wash)" opacity="0.88">
+    <ellipse cx="220" cy="160" rx="340" ry="180" fill="#3d5a4c" opacity="0.35" />
+    <ellipse cx="980" cy="90" rx="420" ry="160" fill="#8a5a32" opacity="0.28" />
+    <ellipse cx="1280" cy="420" rx="380" ry="220" fill="#2f4d5c" opacity="0.4" />
+    <ellipse cx="640" cy="540" rx="520" ry="200" fill="#5a4030" opacity="0.22" />
+    <path d="M40 520 C 220 380, 410 610, 620 430 S 980 250, 1240 360 1540 520, 1600 400" fill="none" stroke="#c48a4a" stroke-width="18" opacity="0.22" />
+    <path d="M0 300 C 180 220, 360 410, 540 280 S 900 140, 1120 260 1400 390, 1600 250" fill="none" stroke="#6f8f86" stroke-width="14" opacity="0.28" />
+    <path d="M80 180 C 260 90, 480 210, 700 120 S 1100 40, 1320 160" fill="none" stroke="#d7b38a" stroke-width="10" opacity="0.18" />
+  </g>
+  <g opacity="0.34" fill="none" stroke="#d8c4a4" stroke-width="2.2">
+    <rect x="1080" y="210" width="86" height="320" rx="6" />
+    <rect x="1184" y="250" width="86" height="280" rx="6" />
+    <rect x="1288" y="190" width="86" height="340" rx="6" />
+    <rect x="1392" y="270" width="86" height="260" rx="6" />
+  </g>
+  <g opacity="0.42">
+    <g fill="#c9a06a">
+      <circle cx="190" cy="410" r="5" /><circle cx="214" cy="410" r="5" /><circle cx="238" cy="410" r="5" /><circle cx="262" cy="410" r="5" />
+      <circle cx="190" cy="434" r="5" /><circle cx="214" cy="434" r="5" /><circle cx="238" cy="434" r="5" /><circle cx="262" cy="434" r="5" />
+      <circle cx="190" cy="458" r="5" /><circle cx="214" cy="458" r="5" /><circle cx="238" cy="458" r="5" /><circle cx="262" cy="458" r="5" />
+    </g>
+    <path d="M274 424 C 360 400, 430 470, 520 430" fill="none" stroke="#8fb4aa" stroke-width="3" />
+    <path d="M274 448 C 390 490, 470 390, 560 450" fill="none" stroke="#c48a4a" stroke-width="3" />
+  </g>
+  <rect width="1600" height="720" filter="url(#grain)" />
+</svg>
